@@ -1,3 +1,4 @@
+<!-- profile.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
 
     main {
       padding: 30px 20px;
-      max-width: 700px;
+      max-width: 800px;
       margin: auto;
     }
 
@@ -63,6 +64,14 @@
       background: #dc2626;
     }
 
+    .user-info {
+      background: #fff;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
     @media (max-width: 600px) {
       .logout-btn {
         top: 15px;
@@ -87,16 +96,44 @@
 
   <main>
     <div class="course-card">
-      <h3>User Information</h3>
+      <h3>Welcome Back!</h3>
       <p><strong>Email:</strong> <span id="user-email"></span></p>
-      <p><strong>User ID:</strong> <span id="user-id"></span></p>
     </div>
 
     <div class="course-card">
-      <h3>Quiz Summary</h3>
+      <h3>📊 Quiz Summary</h3>
       <ul id="summary-list">
         <li>Loading quiz summary...</li>
       </ul>
+    </div>
+
+    <div class="course-card">
+      <h3>👥 Other Top Students</h3>
+      <div class="user-info">
+        <strong>Name:</strong> Ama Owusu<br>
+        <strong>Email:</strong> ama.owusu@smartstudy.com<br>
+        <strong>Level:</strong> Intermediate
+      </div>
+      <div class="user-info">
+        <strong>Name:</strong> Kwame Boateng<br>
+        <strong>Email:</strong> kwame.b@smartstudy.com<br>
+        <strong>Level:</strong> Advanced
+      </div>
+      <div class="user-info">
+        <strong>Name:</strong> Serwaa Mensah<br>
+        <strong>Email:</strong> serwaa.m@smartstudy.com<br>
+        <strong>Level:</strong> Beginner
+      </div>
+      <div class="user-info">
+        <strong>Name:</strong> Michael Yeboah<br>
+        <strong>Email:</strong> michael.y@smartstudy.com<br>
+        <strong>Level:</strong> Intermediate
+      </div>
+      <div class="user-info">
+        <strong>Name:</strong> Abena Darko<br>
+        <strong>Email:</strong> abena.d@smartstudy.com<br>
+        <strong>Level:</strong> Advanced
+      </div>
     </div>
   </main>
 
@@ -111,7 +148,6 @@
         window.location.href = "login.html";
       } else {
         document.getElementById("user-email").textContent = user.email;
-        document.getElementById("user-id").textContent = user.uid;
 
         const summaryList = document.getElementById("summary-list");
         summaryList.innerHTML = "";
