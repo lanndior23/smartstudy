@@ -52,17 +52,13 @@ header p {
 }
 
 /* === Main Form Container === */
-main {
+.auth-container {
   flex: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 40px 20px;
-  z-index: 1;
-  position: relative;
 }
-
 /* === Input Fields === */
 .course-card {
   width: 100%;
