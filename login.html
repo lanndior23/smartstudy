@@ -2,33 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SmartStudy Login</title>
+  <title>Login - SmartStudy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/login.css" />
   <link rel="icon" type="image/png" href="/images/favicon.png">
-  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="js/firebase-config.js"></script>
 </head>
 <body>
-  <header class="login-header">
-    <h1>Welcome Back to <span class="brand">SmartStudy</span></h1>
-    <p>Login to access your dashboard and courses</p>
+  <header>
+    <h1>Welcome Back to SmartStudy</h1>
+    <p>Login to access your courses and quizzes</p>
   </header>
 
-  <main class="login-container">
-    <form onsubmit="login(); return false;" class="login-form">
-      <input id="email" type="email" placeholder="Email Address" required />
-      <input id="password" type="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-      <p id="msg" class="error-msg"></p>
-      <p class="register-link">Don’t have an account? <a href="register.html">Register here</a></p>
-    </form>
+  <main style="max-width: 400px; margin: auto; padding: 30px;">
+    <input id="email" type="email" placeholder="Email" class="course-card" />
+    <input id="password" type="password" placeholder="Password" class="course-card" style="margin-top: 15px;" />
+    <button onclick="login()" class="course-card" style="margin-top: 15px;">Login</button>
+    <p id="msg" style="color: red; margin-top: 10px;"></p>
+    <p style="margin-top: 10px;">Don't have an account? <a href="register.html">Register here</a></p>
   </main>
 
-  <footer class="login-footer">
+  <footer style="text-align: center; margin-top: 40px;">
     <p>© 2025 SmartStudy. Built for Digital Solutions in Ghana Project.</p>
   </footer>
 
