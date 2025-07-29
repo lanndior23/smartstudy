@@ -1,0 +1,143 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.main-header {
+  background: #335a99;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.main-header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.main-header nav {
+  margin-top: 10px;
+}
+
+.main-header nav a {
+  color: #f1f5f9;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.main-header nav a:hover {
+  color: #38bdf8;
+}
+
+/* Main Container */
+.home-container {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.intro h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  color: #2661b3;
+}
+
+/* Courses */
+.courses {
+  margin-bottom: 60px;
+}
+
+.courses h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #0f172a;
+  text-align: center;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.course-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  color: #1e293b;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(122, 73, 73, 0.1);
+  background-color: #f0f9ff;
+  color: #0ea5e9;
+}
+
+/* Video Section */
+.video-section {
+  margin-bottom: 60px;
+}
+
+.video-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #0f172a;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.video-grid iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+.main-footer {
+  background: #1e293b;
+  color: #f1f5f9;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.95rem;
+  margin-top: auto;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - SmartStudy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/register.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Register for SmartStudy</h1>
+    <p>Create your student account to access notes and quizzes</p>
+  </header>
+
+  <main class="auth-container">
+    <div class="form-box">
+      <h2>Create Account</h2>
+      <input id="fullname" type="text" placeholder="Full Name" required />
+      <input id="email" type="email" placeholder="Email" required />
+      <input id="password" type="password" placeholder="Password" required />
+      <button onclick="register()">Register</button>
+      <p id="msg" class="error-text"></p>
+      <p class="auth-link">Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 SmartStudy. Built for Digital Solutions in Ghana Project.</p>
+  </footer>
+
+  <script>
+    function register() {
+      const fullname = document.getElementById("fullname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const msg = document.getElementById("msg");
+
+      msg.textContent = "";
+
+      if (!fullname || !email || !password) {
+        msg.textContent = "Please fill in all fields.";
+        return;
+      }
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          // Save full name to Firestore
+          return firebase.firestore().collection("users").doc(user.uid).set({
+            fullName: fullname,
+            email: email,
+            createdAt: new Date()
+          });
+        })
+        .then(() => {
+          alert("Registration successful!");
+          window.location.href = "dashboard.html";
+        })
+        .catch(error => {
+          msg.textContent = error.message;
+        });
+    }
+  </script>
+</body>
+</html>

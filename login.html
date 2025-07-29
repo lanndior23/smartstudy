@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - SmartStudy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/login.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Welcome Back to SmartStudy</h1>
+    <p>Login to access your courses and quizzes</p>
+  </header>
+
+  <main style="max-width: 400px; margin: auto; padding: 30px;">
+    <input id="email" type="email" placeholder="Email" class="course-card" />
+    <input id="password" type="password" placeholder="Password" class="course-card" style="margin-top: 15px;" />
+    <button onclick="login()" class="course-card" style="margin-top: 15px;">Login</button>
+    <p id="msg" style="color: red; margin-top: 10px;"></p>
+    <p style="margin-top: 10px;">Don't have an account? <a href="register.html">Register here</a></p>
+  </main>
+
+  <footer style="text-align: center; margin-top: 40px;">
+    <p>© 2025 SmartStudy. Built for Digital Solutions in Ghana Project.</p>
+  </footer>
+
+  <script>
+    function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const msg = document.getElementById("msg");
+
+      msg.textContent = "";
+
+      if (!email || !password) {
+        msg.textContent = "Please enter both email and password.";
+        return;
+      }
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => {
+          window.location.href = "dashboard.html";
+        })
+        .catch(error => {
+          msg.textContent = error.message;
+        });
+    }
+  </script>
+</body>
+</html>

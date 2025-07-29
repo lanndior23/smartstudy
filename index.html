@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartStudy – Home</title>
+  <link rel="stylesheet" href="css/homepage.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  
+  </script>
+
+  <style>
+    .course-card {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #f8f8f8;
+      text-align: center;
+      font-weight: bold;
+      cursor: not-allowed;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <h1>📚 SmartStudy</h1>
+    <nav>
+      <a href="login.html">Login</a>
+    
+    </nav>
+  </header>
+
+  <main class="home-container">
+    <section class="intro">
+      <h2>Welcome to SmartStudy</h2>
+      <p>Your interactive platform for IT learning, quizzes, and performance tracking.</p>
+    </section>
+
+<section class="courses">
+  <h3>💡 IT Courses</h3>
+  <div class="course-grid">
+    <div class="course-card" data-link="courses/cybersecurity.html">Cybersecurity</div>
+    <div class="course-card" data-link="courses/networking.html">Computer Networking</div>
+    <div class="course-card" data-link="courses/programming.html">Programming Fundamentals</div>
+    <div class="course-card" data-link="courses/webdev.html">Web Development</div>
+    <div class="course-card" data-link="courses/databases.html">Databases</div>
+    <div class="course-card" data-link="courses/software.html">Software Engineering</div>
+    
+    <div class="course-card" data-link="courses/cloud.html">Cloud Computing</div>
+    <div class="course-card" data-link="courses/ai.html">Artificial Intelligence</div>
+    <div class="course-card" data-link="courses/ml.html">Machine Learning</div>
+    <div class="course-card" data-link="courses/devops.html">DevOps Engineering</div>
+    <div class="course-card" data-link="courses/infosys.html">Information Systems</div>
+    <div class="course-card" data-link="courses/mobiledev.html">Mobile App Development</div>
+    <div class="course-card" data-link="courses/dataanalytics.html">Data Analytics</div>
+    <div class="course-card" data-link="courses/uiux.html">UI/UX Design</div>
+    <div class="course-card" data-link="courses/blockchain.html">Blockchain Fundamentals</div>
+    <div class="course-card" data-link="courses/pentesting.html">Penetration Testing</div>
+  </div>
+</section>
+
+
+    <section class="video-section">
+      <h3>🎥 Tutorial Videos</h3>
+      <div class="video-grid">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/2eebptXfEvw" frameborder="0" allowfullscreen></iframe>
+          <div class="video-overlay">Login to view</div>
+        </div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/RBSGKlAvoiM" frameborder="0" allowfullscreen></iframe>
+          <div class="video-overlay">Login to view</div>
+        </div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/zOjov-2OZ0E" frameborder="0" allowfullscreen></iframe>
+          <div class="video-overlay">Login to view</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 SmartStudy. Built for Ghana Education Sector.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.course-card');
+      const overlays = document.querySelectorAll('.video-overlay');
+
+      auth.onAuthStateChanged(user => {
+        if (user) {
+          // Allow course navigation
+          cards.forEach(card => {
+            card.style.cursor = "pointer";
+            card.addEventListener('click', () => {
+              const link = card.getAttribute('data-link');
+              window.location.href = link;
+            });
+          });
+
+          // Remove video overlays
+          overlays.forEach(overlay => overlay.style.display = 'none');
+        } else {
+          // Not logged in: clicking any course card redirects to login
+          cards.forEach(card => {
+            card.addEventListener('click', () => {
+              alert("Please login to access this course.");
+              window.location.href = "login.html";
+            });
+          });
+
+          // Video overlays already show "Login to view"
+          overlays.forEach(overlay => {
+            overlay.addEventListener('click', () => {
+              window.location.href = "dashboard.html";
+            });
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

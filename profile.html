@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Profile - SmartStudy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <style>
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      background: #4f46e5;
+      color: white;
+    }
+
+    main {
+      padding: 30px 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .course-card {
+      background: #f3f4f6;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      margin-bottom: 20px;
+    }
+
+    ul {
+      padding-left: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f9fafb;
+      font-size: 14px;
+      color: #6b7280;
+      margin-top: 30px;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background: #dc2626;
+    }
+
+    @media (max-width: 600px) {
+      .logout-btn {
+        top: 15px;
+        right: 15px;
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+
+      header h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+
+  <header>
+    <h1>👤 My SmartStudy Profile</h1>
+    <p>View your details and quiz activity</p>
+  </header>
+
+  <main>
+    <div class="course-card">
+      <h3>User Information</h3>
+      <p><strong>Email:</strong> <span id="user-email"></span></p>
+      <p><strong>User ID:</strong> <span id="user-id"></span></p>
+    </div>
+
+    <div class="course-card">
+      <h3>Quiz Summary</h3>
+      <ul id="summary-list">
+        <li>Loading quiz summary...</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 SmartStudy</p>
+  </footer>
+
+  <script>
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        alert("You must be logged in.");
+        window.location.href = "login.html";
+      } else {
+        document.getElementById("user-email").textContent = user.email;
+        document.getElementById("user-id").textContent = user.uid;
+
+        const summaryList = document.getElementById("summary-list");
+        summaryList.innerHTML = "";
+
+        firebase.firestore().collection("quiz_scores")
+          .where("uid", "==", user.uid)
+          .orderBy("timestamp", "desc")
+          .get()
+          .then(snapshot => {
+            if (snapshot.empty) {
+              summaryList.innerHTML = "<li>No quiz records yet.</li>";
+            } else {
+              snapshot.forEach(doc => {
+                const data = doc.data();
+                const li = document.createElement("li");
+                li.innerHTML = `
+                  🧠 <strong>${data.topic}</strong> — ${data.score}/${data.total} 
+                  <em>(${data.timestamp?.toDate().toLocaleDateString() || "N/A"})</em>
+                `;
+                summaryList.appendChild(li);
+              });
+            }
+          });
+      }
+    });
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+</body>
+</html>

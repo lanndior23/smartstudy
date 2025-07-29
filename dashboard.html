@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartStudy | IT Courses</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f6f8;
+      color: #222;
+    }
+
+    header {
+      background-color: #1e3a8a;
+      color: #fff;
+      padding: 40px 20px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-size: 1.1rem;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #ef4444;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background-color: #dc2626;
+    }
+
+    .course-list {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .course-list h2 {
+      color: #1e40af;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .course-card {
+      display: block;
+      padding: 25px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #1e3a8a;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      background-color: #f0f4ff;
+    }
+
+    footer {
+      background-color: #e5e7eb;
+      color: #444;
+      padding: 20px;
+      text-align: center;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .logout-btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SmartStudy</h1>
+    <p>Your Gateway to Professional IT Knowledge</p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+<section class="course-list">
+  <h2>Explore IT Courses</h2>
+  <div class="courses-grid">
+    <!-- Example course card -->
+    <a href="courses/networking.html" class="course-card">
+      <div class="icon">🌐</div>
+      <h3>Computer Networking</h3>
+      <span class="tag">Intermediate</span>
+    </a>
+
+    <a href="courses/webdev.html" class="course-card">
+      <div class="icon">💻</div>
+      <h3>Web Development</h3>
+      <span class="tag">Beginner</span>
+    </a>
+
+    <a href="courses/databases.html" class="course-card">
+      <div class="icon">🗄️</div>
+      <h3>Database Systems</h3>
+      <span class="tag">Intermediate</span>
+    </a>
+
+    <a href="courses/programming.html" class="course-card">
+      <div class="icon">🧠</div>
+      <h3>Programming Fundamentals</h3>
+      <span class="tag">Beginner</span>
+    </a>
+
+    <a href="courses/cybersecurity.html" class="course-card">
+      <div class="icon">🔒</div>
+      <h3>Cybersecurity Basics</h3>
+      <span class="tag">Beginner</span>
+    </a>
+
+    <a href="courses/cloud.html" class="course-card">
+      <div class="icon">☁️</div>
+      <h3>Cloud Computing</h3>
+      <span class="tag">Advanced</span>
+    </a>
+
+    <a href="courses/ai.html" class="course-card">
+      <div class="icon">🤖</div>
+      <h3>Artificial Intelligence</h3>
+      <span class="tag">Advanced</span>
+    </a>
+
+    <a href="courses/ml.html" class="course-card">
+      <div class="icon">📊</div>
+      <h3>Machine Learning</h3>
+      <span class="tag">Advanced</span>
+    </a>
+
+    <a href="courses/devops.html" class="course-card">
+      <div class="icon">⚙️</div>
+      <h3>DevOps Engineering</h3>
+      <span class="tag">Intermediate</span>
+    </a>
+
+    <a href="courses/infosys.html" class="course-card">
+      <div class="icon">🧾</div>
+      <h3>Information Systems</h3>
+      <span class="tag">Beginner</span>
+    </a>
+
+    <a href="courses/mobiledev.html" class="course-card">
+      <div class="icon">📱</div>
+      <h3>Mobile App Development</h3>
+      <span class="tag">Intermediate</span>
+    </a>
+
+    <a href="courses/softwareeng.html" class="course-card">
+      <div class="icon">🛠️</div>
+      <h3>Software Engineering</h3>
+      <span class="tag">Advanced</span>
+    </a>
+
+    <a href="courses/dataanalytics.html" class="course-card">
+      <div class="icon">📈</div>
+      <h3>Data Analytics</h3>
+      <span class="tag">Intermediate</span>
+    </a>
+
+    <a href="courses/uiux.html" class="course-card">
+      <div class="icon">🎨</div>
+      <h3>UI/UX Design</h3>
+      <span class="tag">Beginner</span>
+    </a>
+
+    <a href="courses/blockchain.html" class="course-card">
+      <div class="icon">⛓️</div>
+      <h3>Blockchain Fundamentals</h3>
+      <span class="tag">Advanced</span>
+   
+    <a href="courses/pentesting.html" class="course-card">
+      <div class="icon">🕵️‍♂️</div>
+      <h3>Penetration Testing</h3>
+      <span class="tag">Advanced</span>
+</a>
+
+    </a>
+  </div>
+</section>
+
+
+
+  <footer>
+    © 2025 SmartStudy — Built for the Digital Solutions for Local Challenges in Ghana Project
+  </footer>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- Your Firebase Config -->
+  <script src="js/firebase-config.js"></script>
+
+<script>
+    // Logout functionality
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    }
+
+  </script>
+
+</body>
+</html>
