@@ -127,6 +127,26 @@ footer {
   position: relative;
 }
 
+/* === Auth Container === */
+.auth-container {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+/* Dark Mode Support (Optional) */
+body.dark-mode .auth-container {
+  background: rgba(42, 42, 42, 0.9);
+  color: white;
+  border: 1px solid #444;
+}
+
 /* === Responsive Adjustments === */
 @media (max-width: 500px) {
   header h1 {
