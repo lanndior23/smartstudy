@@ -1,19 +1,21 @@
-/* Reset */
+/* === Reset === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* === Body === */
 body {
   font-family: "Segoe UI", sans-serif;
-   background: url('/images/index.jpg') no-repeat center center fixed;
+  background: linear-gradient(to right, #e3f2fd, #ffffff);
   color: #333;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* === Header/Footer === */
 header, footer {
   text-align: center;
   padding: 20px;
@@ -21,6 +23,7 @@ header, footer {
   color: white;
 }
 
+/* === Auth Container Layout === */
 .auth-container {
   flex: 1;
   display: flex;
@@ -29,6 +32,7 @@ header, footer {
   padding: 40px 20px;
 }
 
+/* === Form Box === */
 .form-box {
   background-color: white;
   padding: 30px 25px;
@@ -38,6 +42,7 @@ header, footer {
   max-width: 400px;
 }
 
+/* === Form Heading === */
 .form-box h2 {
   margin-bottom: 20px;
   font-size: 24px;
@@ -45,7 +50,9 @@ header, footer {
   color: #1e88e5;
 }
 
-.form-box input {
+/* === Input Fields === */
+.form-box input,
+.form-box select {
   width: 100%;
   padding: 14px;
   margin: 10px 0;
@@ -54,6 +61,7 @@ header, footer {
   font-size: 16px;
 }
 
+/* === Buttons === */
 .form-box button {
   width: 100%;
   padding: 14px;
@@ -71,6 +79,7 @@ header, footer {
   background-color: #1565c0;
 }
 
+/* === Auth Links (Login/Register toggle) === */
 .auth-link {
   margin-top: 15px;
   text-align: center;
@@ -86,9 +95,41 @@ header, footer {
   text-decoration: underline;
 }
 
+/* === Error Text === */
 .error-text {
   color: red;
   font-size: 14px;
   margin-top: 10px;
   text-align: center;
+}
+
+/* === Dark Mode Support === */
+body.dark-mode {
+  background: linear-gradient(to right, #121212, #1f1f1f);
+  color: #fff;
+}
+
+body.dark-mode .form-box {
+  background-color: #2a2a2a;
+  color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .form-box input,
+body.dark-mode .form-box select {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  color: #fff;
+}
+
+body.dark-mode .form-box button {
+  background-color: #42a5f5;
+}
+
+body.dark-mode .form-box button:hover {
+  background-color: #1e88e5;
+}
+
+body.dark-mode .auth-link a {
+  color: #90caf9;
 }
