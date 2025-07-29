@@ -19,6 +19,10 @@ const nextBtn = document.getElementById('next-btn');
 const resultBox = document.getElementById('result');
 const scoreText = document.getElementById('score');
 
+// Ensure Firebase is initialized and these are defined:
+const auth = firebase.auth();
+const db = firebase.firestore();
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -87,7 +91,7 @@ function showResult() {
     if (user) {
       db.collection("quiz_scores").add({
         uid: user.uid,
-        topic: topic,
+        topic: topic, // This should be a string like "programming", "webdev", etc.
         score: score,
         total: questions.length,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
