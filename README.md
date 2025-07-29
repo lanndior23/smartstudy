@@ -45,7 +45,7 @@ SmartStudy/
 
 ---
 📸 Screenshots
-Add your app screenshots here for better presentation.
+![Image](imag.png)
 
 🙌 Contributors
 Desmond Attram – Ethical Hacker & Full-stack Developer
