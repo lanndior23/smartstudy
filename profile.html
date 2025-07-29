@@ -142,6 +142,16 @@
   </footer>
 
   <script>
+    // Add this mapping
+    const topicNames = {
+      programming: "Programming",
+      webdev: "Web Development",
+      cybersecurity: "Cybersecurity",
+      networking: "Networking",
+      databases: "Databases",
+      18: "General IT"
+    };
+
     firebase.auth().onAuthStateChanged(user => {
       if (!user) {
         alert("You must be logged in.");
@@ -162,9 +172,10 @@
             } else {
               snapshot.forEach(doc => {
                 const data = doc.data();
+                const topicLabel = topicNames[data.topic] || data.topic;
                 const li = document.createElement("li");
                 li.innerHTML = `
-                  🧠 <strong>${data.topic}</strong> — ${data.score}/${data.total} 
+                  🧠 <strong>${topicLabel}</strong> — ${data.score}/${data.total} 
                   <em>(${data.timestamp?.toDate().toLocaleDateString() || "N/A"})</em>
                 `;
                 summaryList.appendChild(li);
