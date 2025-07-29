@@ -137,7 +137,7 @@ footer {
   width: 100%;
   z-index: 2;
   position: relative;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(0px);
 }
 
 /* Dark Mode Support (Optional) */
