@@ -75,11 +75,23 @@ nextBtn.onclick = () => {
 
 async function fetchQuestions() {
   const categoryId = topicToCategory[topic] || 18; // default: 18
-  const res = await fetch(`https://opentdb.com/api.php?amount=5&category=${categoryId}&type=multiple`);
-  const data = await res.json();
-  questions = data.results;
-  showQuestion();
+  try {
+    const res = await fetch(`https://opentdb.com/api.php?amount=5&category=${categoryId}&type=multiple`);
+    const data = await res.json();
+    if (!data.results || data.results.length === 0) {
+      questionBox.innerHTML = "No questions found for this topic.";
+      return;
+    }
+    questions = data.results;
+    showQuestion();
+  } catch (err) {
+    questionBox.innerHTML = "Failed to fetch questions.";
+    console.error(err);
+  }
 }
+
+// Call fetchQuestions when the page loads
+window.addEventListener('DOMContentLoaded', fetchQuestions);
 
 function showResult() {
   document.getElementById('quiz-container').style.display = "none";
@@ -101,6 +113,3 @@ function showResult() {
     }
   });
 }
-
-// Call fetchQuestions when the page loads
-window.addEventListener('DOMContentLoaded', fetchQuestions);
